@@ -4,8 +4,8 @@ public class UserRegistrationDto {
 	private String firstName;
 	private String lastName;
 	private String email;
+	private String phone;
 	private String password;
-
 	private String department;
 
 	public String getDepartment() {
@@ -29,7 +29,7 @@ public class UserRegistrationDto {
 		
 	}
 	
-	public UserRegistrationDto(String firstName, String lastName, String email, String password, Boolean available, String department) {
+	public UserRegistrationDto(String firstName, String lastName, String email, String phone, String password, Boolean available, String department) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -37,6 +37,7 @@ public class UserRegistrationDto {
 		this.password = password;
 		this.available = available;
 		this.department = department;
+		this.phone = phone;
 	}
 	
 	public String getFirstName() {
@@ -62,5 +63,13 @@ public class UserRegistrationDto {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 }

@@ -21,13 +21,14 @@ public class Employee {
 	@Column(name = "last_name")
 	private String lastName;
 
-	
 	@Column(name = "email")
 	private String email;
 
+	@Column(name = "phone")
+	private String phone;
+
 	@Column(name = "department")
 	private String department;
-
 
 	@Column(name = "available")
 	private Boolean available;
@@ -40,9 +41,6 @@ public class Employee {
 	public void setAvailable(Boolean available) {
 		this.available = available;
 	}
-
-
-
 
 	public long getId() {
 		return id;
@@ -74,5 +72,13 @@ public class Employee {
 
 	public void setDepartment(String department) {
 		this.department = department;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 }
