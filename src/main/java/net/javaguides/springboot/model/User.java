@@ -30,6 +30,8 @@ public class User {
 	private String lastName;
 	
 	private String email;
+
+	private String phone;
 	
 	private String password;
 
@@ -67,15 +69,16 @@ public class User {
 		
 	}
 	
-	public User(String firstName, String lastName, String email, String password, Collection<Role> roles, String department, Boolean available) {
+	public User(String firstName, String lastName, String email, String phone, String password, Collection<Role> roles, String department, Boolean available) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.password = password;
 		this.roles = roles;
+		this.department = department;
 		this.available = available;
-		this.available = available;
+		this.phone = phone;
 	}
 	public Long getId() {
 		return id;
