@@ -2,22 +2,19 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
-<title>Employee Management System</title>
+<title>Substitute Management System</title>
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 			integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
 			crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
 			integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
 			crossorigin="anonymous"></script>
-
 	<script>
 	 $(function(){
-
 		$(".dropdown-menu").on('click', 'li a', function(){
 		  $(".btn:first-child").text($(this).text());
 		  $(".btn:first-child").val($(this).text());
 	   });
-
 	});
 	</script>
 	<link rel="stylesheet"
@@ -28,9 +25,8 @@
 </head>
 <body>
 	<div class="container">
-		<h1>Employee Management System</h1>
+		<h1>Substitute Management System</h1>
 		<hr>
-		<h2>Save Employee</h2>
 
 		<form action="#" th:action="@{/saveEmployee}" th:object="${employee}"
 			method="POST">
@@ -43,31 +39,25 @@
 				<input type="text" th:field="*{email}"
 				placeholder="Employee Email" class="form-control mb-4 col-4">
 
-				<div class="dropdown show">
-					<a class="btn btn-light text-left dropdown-toggle form-control mb-4 col-4" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						Subject
-					</a>
-
-					<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-						<li><a class="dropdown-item" href="#" th:field="*{department}" th:value="Maths">Maths</a></li>
-						<li><a class="dropdown-item" href="#" th:field="*{department}" th:value="English">English</a></li>
-						<li><a class="dropdown-item" href="#" th:field="*{department}" th:value="French">French</a></li>
-						<li><a class="dropdown-item" href="#" th:field="*{department}" th:value="History">History</a></li>
-						<li><a class="dropdown-item" href="#" th:field="*{department}" th:value="Irish">Irish</a></li>
-						<li><a class="dropdown-item" href="#" th:field="*{department}" th:value="German">German</a></li>
-						<li><a class="dropdown-item" href="#" th:field="*{department}" th:value="Woodwork">Woodwork</a></li>
-						<li><a class="dropdown-item" href="#" th:field="*{department}" th:value="Art">Art</a></li>
-						<li><a class="dropdown-item" href="#" th:field="*{department}" th:value="Music">Music</a></li>
-					</ul>
-				</div>
+				<select id="department" name="department" class="btn btn-light text-left dropdown-toggle form-control mb-4 col-4" aria-label=".form-select-lg example">
+					<option selected>Subject</option>
+					<option th:field="*{department}" value="Maths">Maths</option>
+					<option th:field="*{department}" value="English">English</option>
+					<option th:field="*{department}" value="French">French</option>
+					<option th:field="*{department}" value="History">History</option>
+					<option th:field="*{department}" value="PE">PE</option>
+					<option th:field="*{department}" value="Irish">Irish</option>
+					<option th:field="*{department}" value="Art">Art</option>
+					<option th:field="*{department}" value="Science">Science</option>
+				</select>
 				
-				<button type="submit" class="btn btn-info col-2"> Save Employee</button>
-			<input type="hidden" th:field="*{available}" th:value="true">
+				<button type="submit" class="btn btn-info mb-4 col-2"> Save Employee</button>
+			<input type="hidden" name="available" id="available "th:value="true">
 		</form>
 		
 		<hr>
 		
-		<a th:href = "@{/}"> Back to Employee List</a>
+		<a th:href = "@{/}"> Back to Substitute List</a>
 	</div>
 </body>
 </html>
