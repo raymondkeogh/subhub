@@ -32,7 +32,27 @@ public class User {
 	private String email;
 	
 	private String password;
-	
+
+	private String department;
+
+	private Boolean available;
+
+	public String getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(String department) {
+		this.department = department;
+	}
+
+	public Boolean getAvailable() {
+		return available;
+	}
+
+	public void setAvailable(Boolean available) {
+		this.available = available;
+	}
+
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(
 			name = "users_roles",
@@ -47,13 +67,15 @@ public class User {
 		
 	}
 	
-	public User(String firstName, String lastName, String email, String password, Collection<Role> roles) {
+	public User(String firstName, String lastName, String email, String password, Collection<Role> roles, String department, Boolean available) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.password = password;
 		this.roles = roles;
+		this.available = available;
+		this.available = available;
 	}
 	public Long getId() {
 		return id;

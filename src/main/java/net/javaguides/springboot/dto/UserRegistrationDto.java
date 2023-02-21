@@ -5,17 +5,38 @@ public class UserRegistrationDto {
 	private String lastName;
 	private String email;
 	private String password;
-	
+
+	private String department;
+
+	public String getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(String department) {
+		this.department = department;
+	}
+
+	public Boolean getAvailable() {
+		return available;
+	}
+
+	public void setAvailable(Boolean available) {
+		this.available = available;
+	}
+
+	private Boolean available;
 	public UserRegistrationDto(){
 		
 	}
 	
-	public UserRegistrationDto(String firstName, String lastName, String email, String password) {
+	public UserRegistrationDto(String firstName, String lastName, String email, String password, Boolean available, String department) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.password = password;
+		this.available = available;
+		this.department = department;
 	}
 	
 	public String getFirstName() {
