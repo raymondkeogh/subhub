@@ -20,13 +20,18 @@ public class Employee {
 	
 	@Column(name = "last_name")
 	private String lastName;
+
 	
 	@Column(name = "email")
 	private String email;
 
-
 	@Column(name = "department")
 	private String department;
+
+
+	@Column(name = "available")
+	private Boolean available;
+
 
 	public Boolean getAvailable() {
 		return available;
@@ -36,8 +41,6 @@ public class Employee {
 		this.available = available;
 	}
 
-	@Column(name = "available")
-	private Boolean available;
 
 
 
