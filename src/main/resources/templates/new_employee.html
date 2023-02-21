@@ -27,9 +27,9 @@
 </head>
 <body>
 	<div class="container">
-		<h1>Employee Management System</h1>
+		<h1>SubHub</h1>
 		<hr>
-		<h2>Save Employee</h2>
+		<h2>Add New Substitute</h2>
 
 		<form action="#" th:action="@{/saveEmployee}" th:object="${employee}"
 			method="POST">
@@ -62,12 +62,12 @@
 					</ul>
 				</div>
 				
-				<button type="submit" class="btn btn-info col-2"> Save Employee</button>
+				<button type="submit" class="btn btn-info col-2"> Save Sub</button>
 		</form>
 		
 		<hr>
 		
-		<a th:href = "@{/}"> Back to Employee List</a>
+		<a th:href = "@{/}"> Back to Subs List</a>
 	</div>
 </body>
 </html>
