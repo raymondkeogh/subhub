@@ -28,6 +28,17 @@ public class Employee {
 	@Column(name = "department")
 	private String department;
 
+	public Boolean getAvailable() {
+		return available;
+	}
+
+	public void setAvailable(Boolean available) {
+		this.available = available;
+	}
+
+	@Column(name = "available")
+	private Boolean available;
+
 
 
 	public long getId() {
