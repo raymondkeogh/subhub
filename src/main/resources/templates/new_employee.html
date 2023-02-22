@@ -21,7 +21,8 @@
 		  href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
 		  integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
 		  crossorigin="anonymous">
-	<link rel="stylesheet" href="src/main/resources/templates/style.css">
+	<link  href="/style.css" rel="stylesheet" type="text/css">
+
 </head>
 <body>
 	<div class="container">
@@ -31,27 +32,30 @@
 		<form action="#" th:action="@{/saveEmployee}" th:object="${employee}"
 			method="POST">
 			<input type="text" th:field="*{firstName}"
-				placeholder="Employee First Name" class="form-control mb-4 col-4">
+				placeholder="First Name" class="form-control mb-4 col-4 col-xs-12 ">
 				
 				<input type="text" th:field="*{lastName}"
-				placeholder="Employee Last Name" class="form-control mb-4 col-4">
+				placeholder="Last Name" class="form-control mb-4 col-4 col-xs-12">
 				
 				<input type="text" th:field="*{email}"
-				placeholder="Employee Email" class="form-control mb-4 col-4">
+				placeholder="Email" class="form-control mb-4 col-4 col-xs-12">
 
-				<select id="department" name="department" class="btn btn-light text-left dropdown-toggle form-control mb-4 col-4" aria-label=".form-select-lg example">
+				<input type="text" th:field="*{phone}"
+				   placeholder="Phone" class="form-control mb-4 col-4 col-xs-12">
+
+				<select id="department" name="department" class="text-left dropdown-toggle form-control mb-4 col-4 col-xs-12 " aria-label=".form-select-lg">
 					<option selected>Subject</option>
-					<option th:field="*{department}" value="Maths">Maths</option>
-					<option th:field="*{department}" value="English">English</option>
-					<option th:field="*{department}" value="French">French</option>
-					<option th:field="*{department}" value="History">History</option>
-					<option th:field="*{department}" value="PE">PE</option>
-					<option th:field="*{department}" value="Irish">Irish</option>
-					<option th:field="*{department}" value="Art">Art</option>
-					<option th:field="*{department}" value="Science">Science</option>
+					<option value="Maths">Maths</option>
+					<option value="English">English</option>
+					<option value="French">French</option>
+					<option value="History">History</option>
+					<option value="PE">PE</option>
+					<option value="Irish">Irish</option>
+					<option value="Art">Art</option>
+					<option value="Science">Science</option>
 				</select>
 				
-				<button type="submit" class="btn btn-info mb-4 col-2"> Save Employee</button>
+				<button type="submit" class="btn btn-info mb-4 col-4 col-xs-12"> Save Details</button>
 			<input type="hidden" name="available" id="available "th:value="true">
 		</form>
 		

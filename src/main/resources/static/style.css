@@ -1,0 +1,27 @@
+body {
+    background-image: url("/background.jpg");
+    background-size: cover;
+}
+
+
+.table-striped>tbody>tr:nth-child(even)>td,
+.table-striped>tbody>tr:nth-child(even)>th {
+   background-color: white; // Choose your own color here
+ }
+
+
+.table>thead:first-child>tr:first-child>th {
+    background-color: #ffffff;
+}
+
+h1,h2, .pagination, .pagination>div>span>a,.pagination>div>a{
+    color: #ffffff;
+}
+
+.navbar-inverse {
+    background-color: #184063
+}
+
+.navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav>li>a {
+     color: #ffffff;
+}
