@@ -25,3 +25,7 @@ h1,h2, .pagination, .pagination>div>span>a,.pagination>div>a{
 .navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav>li>a {
      color: #ffffff;
 }
+
+.loginRegister, .loginRegister span a {
+    color: #ffffff;
+}
