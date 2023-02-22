@@ -1,123 +1,110 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
-<title>SubHub | View Subs</title>
+	<meta charset="ISO-8859-1">
+	<title>SubHub | View Subs</title>
 
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-	crossorigin="anonymous">
+	<link rel="stylesheet"
+		  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+		  integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+		  crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
 
-<link  href="/css/style.css" rel="stylesheet" type="text/css">
+	<link  href="/css/style.css" rel="stylesheet" type="text/css">
+
 
 </head>
 <body>
 
 <!-- create navigation bar ( header) -->
-	<nav class="navbar navbar-inverse navbar-fixed-top">
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed"
+<nav class="navbar navbar-inverse navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed"
 					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
 					aria-controls="navbar">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#" th:href="@{/}">SubHub</a>
-			</div>
-			<div id="navbar" class="collapse navbar-collapse">
-				<ul class="nav navbar-nav">
-					<li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
-				</ul>
-			</div>
+				<span class="sr-only">Toggle navigation</span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#" th:href="@{/}">SubHub</a>
 		</div>
-	</nav>
-
-	<br>
-	<br>
-	
-	<div class="container my-2">
-	<h1>Substitutes List</h1>
-	
-	<a th:href = "@{/showNewEmployeeForm}" class="btn btn-primary btn-sm mb-3"> Add Sub </a>
-
-		<div>
-			<span class="text-primary">Filter by subject:</span>
-			<a th:href="@{'/page/1' + '?sortField=firstName&sortDir=' + ${reverseSortDir} + '&amp;department=Maths'}">Maths</a>
-			<a th:href="@{'/page/1' + '?sortField=firstName&sortDir=' + ${reverseSortDir} + '&amp;department=English'}">English</a>
-			<a th:href="@{'/page/1' + '?sortField=firstName&sortDir=' + ${reverseSortDir} + '&amp;department=French'}">French</a>
-			<a th:href="@{'/page/1' + '?sortField=firstName&sortDir=' + ${reverseSortDir} + '&amp;department=History'}">History</a>
-			<a th:href="@{'/page/1' + '?sortField=firstName&sortDir=' + ${reverseSortDir} + '&amp;department=PE'}">PE</a>
-			<a th:href="@{'/page/1' + '?sortField=firstName&sortDir=' + ${reverseSortDir} + '&amp;department=Irish'}">Irish</a>
-			<a th:href="@{'/page/1' + '?sortField=firstName&sortDir=' + ${reverseSortDir} + '&amp;department=Art'}">Art</a>
-			<a th:href="@{'/page/1' + '?sortField=firstName&sortDir=' + ${reverseSortDir} + '&amp;department=Science'}">Science</a>
+		<div id="navbar" class="collapse navbar-collapse">
+			<ul class="nav navbar-nav">
+				<li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
+			</ul>
 		</div>
-		<table border="1" class = "table table-striped table-responsive-md">
-			<thead>
-				<tr>
-					<th>
-						<a th:href="@{'/page/' + ${currentPage} + '?sortField=firstName&sortDir=' + ${reverseSortDir}}">
-							First Name</a>
-					</th>
-					<th>
-					<a th:href="@{'/page/' + ${currentPage} + '?sortField=lastName&sortDir=' + ${reverseSortDir}}">
-							Last Name</a>
-					</th>
-					<th>
-					<a th:href="@{'/page/' + ${currentPage} + '?sortField=email&sortDir=' + ${reverseSortDir}}">
-							Email</a>
-					</th>
-					<th>Phone Number</th>
-					<th>
-					<a th:href="@{'/page/' + ${currentPage} + '?sortField=department&sortDir=' + ${reverseSortDir}}">
-						Subject</a>
-					</th>
-					<th>
-					<a th:href="@{'/page/' + ${currentPage} + '?sortField=available&sortDir=' + ${reverseSortDir}}">
-						Availability</a>
-					</th>
-					<th> Actions </th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="employee : ${listEmployees}">
-					<td th:text="${employee.firstName}"></td>
-					<td th:text="${employee.lastName}"></td>
-					<td th:text="${employee.email}"></td>
-					<td th:text="${employee.phone}"></td>
-					<td th:text="${employee.department}"></td>
-					<td th:text="${employee.available} ? 'Available' : 'Not available'"></td>
-					<td> <a th:href="@{/showFormForUpdate/{id}(id=${employee.id})}" class="btn btn-primary">Update</a>
-					    <a th:href="@{/deleteEmployee/{id}(id=${employee.id})}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this item?');">Delete</a>
-					</td>
-				</tr>
-			</tbody>
-		</table>
-		
-		<div th:if = "${totalPages > 1}">
-			<div class = "pagination row col-sm-10">
-				<div class = "col-sm-2">
-					Total Rows: [[${totalItems}]] 
-				</div>
-				<div class = "col-sm-3">
+	</div>
+</nav>
+
+<br>
+<br>
+
+<div class="container my-2">
+	<h1 class="text-center">Substitutes List</h1>
+
+	<a th:href = "@{/showNewEmployeeForm}" class="btn btn-primary btn-sm mb-3"> Add Substitute </a>
+
+	<div class="dropdown text-right">
+
+		<a id="my-dropdown" href="#" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Filter by subject</a>
+
+		<ul class="dropdown-menu dropdown-menu-right text-right">
+			<li><a th:href="@{'/page/1' + '?sortField=firstName&sortDir=' + ${reverseSortDir} + '&amp;department=Maths'}">Maths</a></li>
+			<li><a th:href="@{'/page/1' + '?sortField=firstName&sortDir=' + ${reverseSortDir} + '&amp;department=English'}">English</a></li>
+			<li><a th:href="@{'/page/1' + '?sortField=firstName&sortDir=' + ${reverseSortDir} + '&amp;department=French'}">French</a></li>
+			<li><a th:href="@{'/page/1' + '?sortField=firstName&sortDir=' + ${reverseSortDir} + '&amp;department=History'}">History</a></li>
+			<li><a th:href="@{'/page/1' + '?sortField=firstName&sortDir=' + ${reverseSortDir} + '&amp;department=PE'}">PE</a></li>
+			<li><a th:href="@{'/page/1' + '?sortField=firstName&sortDir=' + ${reverseSortDir} + '&amp;department=Irish'}">Irish</a></li>
+			<li><a th:href="@{'/page/1' + '?sortField=firstName&sortDir=' + ${reverseSortDir} + '&amp;department=Art'}">Art</a></li>
+			<li><a th:href="@{'/page/1' + '?sortField=firstName&sortDir=' + ${reverseSortDir} + '&amp;department=Science'}">Science</a></li>
+		</ul>
+	</div>
+
+	<table border="1" class = "sortable table table-striped table-responsive-md">
+		<thead>
+		<tr>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Email</th>
+			<th>Phone Number</th>
+			<th>Subject</th>
+			<th>Availability</th>
+			<th>Actions</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr th:each="employee : ${listEmployees}">
+			<td th:text="${employee.firstName}"></td>
+			<td th:text="${employee.lastName}"></td>
+			<td th:text="${employee.email}"></td>
+			<td th:text="${employee.phone}"></td>
+			<td th:text="${employee.department}"></td>
+			<td th:class="${employee.available} ? available : notAvailable" th:text="${employee.available} ? '&#9673; Available' : ' &#9673; Not available'">
+
+			</td>
+			<td> <a th:href="@{/showFormForUpdate/{id}(id=${employee.id})}" class="btn btn-primary">Update</a>
+				<a th:href="@{/deleteEmployee/{id}(id=${employee.id})}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this item?');">Delete</a>
+			</td>
+		</tr>
+		</tbody>
+	</table>
+
+	<div th:if = "${totalPages > 1}">
+		<div class = "pagination row col-sm-10">
+			<div class = "col-sm-2">
+				Total Subs: [[${totalItems}]]
+			</div>
+			<div class = "col-sm-3">
 					<span th:each="i: ${#numbers.sequence(1, totalPages)}">
 						<a th:if="${currentPage != i}" th:href="@{'/page/' + ${i}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">[[${i}]]</a>
 						<span th:unless="${currentPage != i}">[[${i}]]</span>  &nbsp; &nbsp;
 					</span>
-				</div>
-				<div class = "col-sm-1">
-					<a th:if="${currentPage < totalPages}" th:href="@{'/page/' + ${currentPage + 1}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Next</a>
-					<span th:unless="${currentPage < totalPages}">Next</span>
-				</div>
-				
-				 <div class="col-sm-1">
-    				<a th:if="${currentPage < totalPages}" th:href="@{'/page/' + ${totalPages}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Last</a>
-					<span th:unless="${currentPage < totalPages}">Last</span>
-   				 </div>
 			</div>
 		</div>
 	</div>
+</div>
 </body>
 </html>

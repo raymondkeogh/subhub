@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
-<title>Substitute Management System</title>
+	<meta charset="ISO-8859-1">
+	<title>Substitute Management System</title>
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 			integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
 			crossorigin="anonymous"></script>
@@ -25,43 +25,45 @@
 
 </head>
 <body>
-	<div class="container">
-		<h1>Substitute Management System</h1>
-		<hr>
 
-		<form action="#" th:action="@{/saveEmployee}" th:object="${employee}"
-			method="POST">
-			<input type="text" th:field="*{firstName}"
-				placeholder="First Name" class="form-control mb-4 col-4 col-xs-12 ">
-				
-				<input type="text" th:field="*{lastName}"
-				placeholder="Last Name" class="form-control mb-4 col-4 col-xs-12">
-				
-				<input type="text" th:field="*{email}"
-				placeholder="Email" class="form-control mb-4 col-4 col-xs-12">
+<div class="container">
+	<hr>
+	<h1>Add Substitute</h1>
+	<hr>
 
-				<input type="text" th:field="*{phone}"
-				   placeholder="Phone" class="form-control mb-4 col-4 col-xs-12">
+	<form action="#" th:action="@{/saveEmployee}" th:object="${employee}"
+		  method="POST">
+		<input type="text" th:field="*{firstName}"
+			   placeholder="First Name" class="form-control mb-4 col-4 col-xs-12 ">
 
-				<select id="department" name="department" class="text-left dropdown-toggle form-control mb-4 col-4 col-xs-12 " aria-label=".form-select-lg">
-					<option selected>Subject</option>
-					<option value="Maths">Maths</option>
-					<option value="English">English</option>
-					<option value="French">French</option>
-					<option value="History">History</option>
-					<option value="PE">PE</option>
-					<option value="Irish">Irish</option>
-					<option value="Art">Art</option>
-					<option value="Science">Science</option>
-				</select>
-				
-				<button type="submit" class="btn btn-info mb-4 col-4 col-xs-12"> Save Details</button>
-			<input type="hidden" name="available" id="available "th:value="true">
-		</form>
-		
-		<hr>
-		
-		<a th:href = "@{/}"> Back to Substitute List</a>
-	</div>
+		<input type="text" th:field="*{lastName}"
+			   placeholder="Last Name" class="form-control mb-4 col-4 col-xs-12">
+
+		<input type="text" th:field="*{email}"
+			   placeholder="Email" class="form-control mb-4 col-4 col-xs-12">
+
+		<input type="text" th:field="*{phone}"
+			   placeholder="Phone" class="form-control mb-4 col-4 col-xs-12">
+
+		<select id="department" name="department" class="text-left dropdown-toggle form-control mb-4 col-4 col-xs-12 " aria-label=".form-select-lg">
+			<option selected>Subject</option>
+			<option value="Maths">Maths</option>
+			<option value="English">English</option>
+			<option value="French">French</option>
+			<option value="History">History</option>
+			<option value="PE">PE</option>
+			<option value="Irish">Irish</option>
+			<option value="Art">Art</option>
+			<option value="Science">Science</option>
+		</select>
+
+		<button type="submit" class="btn btn-info mb-4 col-4 col-xs-12"> Save Details</button>
+		<input type="hidden" name="available" id="available "th:value="true">
+	</form>
+
+	<hr>
+
+	<a class="backHome" th:href = "@{/}"> Back to Substitute List</a>
+</div>
 </body>
 </html>

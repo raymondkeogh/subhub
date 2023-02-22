@@ -26,6 +26,23 @@ h1,h2, .pagination, .pagination>div>span>a,.pagination>div>a{
      color: #ffffff;
 }
 
+
+.navbar-brand {
+    font-size: 50px;
+}
+
 .loginRegister, .loginRegister span a {
     color: #ffffff;
+}
+
+.backHome {
+    color: #ffffff;
+}
+
+.available{
+  color: green;
+}
+
+.notAvailable {
+  color: red;
 }
