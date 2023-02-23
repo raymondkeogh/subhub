@@ -54,9 +54,6 @@ public class EmployeeController {
 	public String saveEmployee(@ModelAttribute("employee") Employee employee) {
 		// save employee to database
 		employeeService.saveEmployee(employee);
-
-
-
 		return "redirect:/update_success";
 	}
 	

@@ -26,15 +26,15 @@
         <p class="lead text-white fs-3">
            Record Updated!
         </p>
-
+        <h2><span sec:authentication="principal.username"></span></h2>
 
         <div sec:authorize="hasRole('ADMIN')">
-            <a th:href="/" class="btn btn-primary fs-3">Return to SubHub Homepage</a>
+            <a href="/" class="btn btn-primary fs-3">Return to SubHub Homepage</a>
         </div>
 
         <div sec:authorize="hasRole('USER')">
-            <a th:href="/showFormForUpdate/*{id}" class="btn btn-primary fs-3">Edit Record again?</a>
-            <a th:href="/logout" class="btn btn-primary fs-3">Logout</a>
+<!--            <a th:href="@{/showFormForUpdate/principal.id}" class="btn btn-primary fs-3">Edit Record again?</a>-->
+            <a href="/logout" class="btn btn-primary fs-3">Logout</a>
         </div>
 
     </div>
