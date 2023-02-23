@@ -2,8 +2,11 @@ package net.javaguides.springboot.controller;
 
 import java.util.List;
 
+import net.javaguides.springboot.model.Role;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.data.domain.Page;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,14 +23,25 @@ public class EmployeeController {
 
 	@Autowired
 	private EmployeeService employeeService;
+
+
 	
 	// display list of employees
 	@GetMapping("/")
 	public String viewHomePage(Model model) {
 	// call to findPaginated, with default values
+
 		return findPaginated(1, "firstName", "asc", null, model);
 	}
-	
+
+
+	@GetMapping("/update_success")
+	public String viewSuccess(Model model) {
+
+		return "update_success";
+	}
+
+
 	@GetMapping("/showNewEmployeeForm")
 	public String showNewEmployeeForm(Model model) {
 		// create model attribute to bind form data
@@ -35,12 +49,15 @@ public class EmployeeController {
 		model.addAttribute("employee", employee);
 		return "new_employee";
 	}
-	
+
 	@PostMapping("/saveEmployee")
 	public String saveEmployee(@ModelAttribute("employee") Employee employee) {
 		// save employee to database
 		employeeService.saveEmployee(employee);
-		return "redirect:/";
+
+
+
+		return "redirect:/update_success";
 	}
 	
 	@GetMapping("/showFormForUpdate/{id}")

@@ -1,5 +1,6 @@
 package net.javaguides.springboot.config;
 
+import net.javaguides.springboot.controller.MySimpleUrlAuthenticationSuccessHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -9,6 +10,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import net.javaguides.springboot.service.UserService;
@@ -16,6 +18,15 @@ import net.javaguides.springboot.service.UserService;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+
+
+	private AuthenticationSuccessHandler authenticationSuccessHandler;
+
+//	@Autowired
+//	public SecurityConfiguration(AuthenticationSuccessHandler authenticationSuccessHandler) {
+//		this.authenticationSuccessHandler = authenticationSuccessHandler;
+//	}
+
 
 	@Autowired
 	private UserService userService;
@@ -46,11 +57,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	                "/css/**",
 	                "/img/**"
 						).permitAll()
+				.antMatchers("/").hasRole("ADMIN")
 		.anyRequest().authenticated()
 		.and()
 		.formLogin()
-		.loginPage("/login")
-		.permitAll()
+		.loginPage("/login").permitAll().defaultSuccessUrl("/").successHandler(successHandler())
 		.and()
 		.logout()
 		.invalidateHttpSession(true)
@@ -60,4 +71,29 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		.permitAll();
 	}
 
+
+
+
+	@Bean
+	public AuthenticationSuccessHandler successHandler() {
+		return new MySimpleUrlAuthenticationSuccessHandler();
+	}
+
+
+
+
+	@Autowired
+	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+		auth
+				.inMemoryAuthentication()
+				.withUser("user").password("{noop}pass").roles("USER")
+				.and()
+				.withUser("admin").password("pass").roles("ADMIN");
+	}
+
 }
+
+
+
+
+

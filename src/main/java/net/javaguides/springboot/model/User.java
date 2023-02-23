@@ -1,6 +1,7 @@
 package net.javaguides.springboot.model;
 
 import java.util.Collection;
+import java.util.Optional;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -28,6 +29,7 @@ public class User {
 	
 	@Column(name = "last_name")
 	private String lastName;
+
 	
 	private String email;
 
