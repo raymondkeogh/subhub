@@ -21,19 +21,18 @@
 <body>
 <div class="d-flex align-items-center justify-content-center vh-100">
     <div class="text-center">
-        <h1 class="display-1 fw-bold">404</h1>
-        <p class="fs-3 text-white"> <span class="text-danger">Opps!</span> Page not found.</p>
-        <p class="lead text-white fs-3">
-           Record Updated!
-        </p>
-        <h2><span sec:authentication="principal.username"></span></h2>
+        <h2 class="display-1 fw-bold"> Record Updated!</h2>
+
+        <hr>
+
 
         <div sec:authorize="hasRole('ADMIN')">
             <a href="/" class="btn btn-primary fs-3">Return to SubHub Homepage</a>
         </div>
 
         <div sec:authorize="hasRole('USER')">
-<!--            <a th:href="@{/showFormForUpdate/principal.id}" class="btn btn-primary fs-3">Edit Record again?</a>-->
+
+<!--            <a th:href="@{/showFormForUpdate/{id}(id=${employee.id})}" class="btn btn-primary fs-3">Edit Record again?</a>-->
             <a href="/logout" class="btn btn-primary fs-3">Logout</a>
         </div>
 

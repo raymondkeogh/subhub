@@ -22,11 +22,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	private AuthenticationSuccessHandler authenticationSuccessHandler;
 
-//	@Autowired
-//	public SecurityConfiguration(AuthenticationSuccessHandler authenticationSuccessHandler) {
-//		this.authenticationSuccessHandler = authenticationSuccessHandler;
-//	}
-
 
 	@Autowired
 	private UserService userService;

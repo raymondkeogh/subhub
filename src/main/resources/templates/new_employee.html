@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="ISO-8859-1">
-	<title>Substitute Management System</title>
+	<title>SubHub</title>
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 			integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
 			crossorigin="anonymous"></script>
@@ -44,6 +44,12 @@
 
 		<input type="text" th:field="*{phone}"
 			   placeholder="Phone" class="form-control mb-4 col-4 col-xs-12">
+
+		<select id="available" name="available" class="text-left dropdown-toggle form-control mb-4 col-4 col-xs-12 " aria-label=".form-select-lg">
+			<option th:value ="*{available}" disabled selected hidden>Availability</option>
+			<option value="true">Available</option>
+			<option value="false">Not Available</option>
+		</select>
 
 		<select id="department" name="department" class="text-left dropdown-toggle form-control mb-4 col-4 col-xs-12 " aria-label=".form-select-lg">
 			<option selected>Subject</option>

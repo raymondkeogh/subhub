@@ -45,17 +45,6 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 
 <div class="container my-2 content-container">
 	<h1 class="text-center">Substitutes List</h1>
-	<h2><span sec:authentication="principal.username">User</span></h2>
-
-
-	<div sec:authorize="hasRole('ADMIN')">
-		This content is only shown to administrators.§§
-	</div>
-
-	<div sec:authorize="hasRole('USER')">
-		This content is only shown to users.
-	</div>
-
 	<div class="buttons-container">
 
 	<a th:href = "@{/showNewEmployeeForm}" class="btn btn-primary btn-lg"> Add Substitute </a>

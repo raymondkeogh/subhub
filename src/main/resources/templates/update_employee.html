@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
 	<meta charset="ISO-8859-1">
-	<title>Employee Management System</title>
+	<title>SubHub</title>
 
 	<link rel="stylesheet"
 		  href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
@@ -52,7 +53,17 @@
 
 	<hr>
 
-	<a class="backHome" th:href = "@{/}"> Back to Employee List</a>
+
+
+	<div sec:authorize="hasRole('ADMIN')">
+		<a class="backHome" th:href = "@{/}"> Back to Employee List</a>
+	</div>
+
+	<div sec:authorize="hasRole('USER')">
+		<a class="backHome" href="/logout">Logout</a>
+	</div>
+
+
 </div>
 </body>
 </html>
