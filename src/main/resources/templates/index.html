@@ -42,14 +42,16 @@
 <br>
 <br>
 
-<div class="container my-2">
+<div class="container my-2 content-container">
 	<h1 class="text-center">Substitutes List</h1>
 
-	<a th:href = "@{/showNewEmployeeForm}" class="btn btn-primary btn-sm mb-3"> Add Substitute </a>
+	<div class="buttons-container">
 
-	<div class="dropdown text-right">
+	<a th:href = "@{/showNewEmployeeForm}" class="btn btn-primary btn-lg"> Add Substitute </a>
 
-		<a id="my-dropdown" href="#" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Filter by subject</a>
+	<span class="dropdown text-right">
+
+		<a id="my-dropdown" href="#" class="btn btn-primary btn-lg dropdown-toggle" data-toggle="dropdown">Filter by subject</a>
 
 		<ul class="dropdown-menu dropdown-menu-right text-right">
 			<li><a th:href="@{'/page/1' + '?sortField=firstName&sortDir=' + ${reverseSortDir}}">All</a></li>
@@ -62,8 +64,8 @@
 			<li><a th:href="@{'/page/1' + '?sortField=firstName&sortDir=' + ${reverseSortDir} + '&amp;department=Art'}">Art</a></li>
 			<li><a th:href="@{'/page/1' + '?sortField=firstName&sortDir=' + ${reverseSortDir} + '&amp;department=Science'}">Science</a></li>
 		</ul>
+	</span>
 	</div>
-
 	<table border="1" class = "sortable table table-striped table-responsive-md">
 		<thead>
 		<tr>

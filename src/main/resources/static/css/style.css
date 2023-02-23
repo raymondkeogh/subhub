@@ -29,10 +29,45 @@ h1,h2, .pagination, .pagination>div>span>a,.pagination>div>a{
 
 .navbar-brand {
     font-size: 50px;
+    font-weight:500;
+}
+
+.navbar-header {
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.navbar-nav {
+    float: right;
+    padding-top: 1rem;
+}
+
+.navbar-nav>li>a {
+    font-size: 2rem;
+}
+
+
+.content-container {
+    margin-top: 4rem;
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.8rem;
+}
+
+.table {
+    margin-bottom: 10px;
 }
 
 .loginRegister, .loginRegister span a {
+    padding-top: 2rem;
     color: #ffffff;
+}
+
+.sub-text {
+    font-size: 1.8rem;
 }
 
 .backHome {
