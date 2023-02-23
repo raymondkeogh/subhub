@@ -2,57 +2,100 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="ISO-8859-1">
-	<title>Employee Management System</title>
+	<title>SubHub | Update Substitute</title>
 
 	<link rel="stylesheet"
-		  href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+		  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+		  integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+		  crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
 	<link  href="/css/style.css" rel="stylesheet" type="text/css">
 
 </head>
 <body>
-<div class="container my-2">
-	<hr>
-	<h2>Update Substitute</h2>
-	<hr>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+				<span class="sr-only">Toggle navigation</span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#" th:href="@{/}">SubHub</a>
+		</div>
+		<div id="navbar" class="collapse navbar-collapse">
+			<ul class="nav navbar-nav">
+				<li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+<br>
+<br>
+<div class="container my-2 content-container">
+	<div class = "row">
+		<div class = "loginRegister col-md-6 col-md-offset-3">
+		<hr>
+		<h2>Update Substitute</h2>
+		<hr>
 
-	<form action="#" th:action="@{/saveEmployee}" th:object="${employee}"
-		  method="POST">
+			<form action="#" th:action="@{/saveEmployee}" th:object="${employee}"
+				  method="POST" class="my-2">
 
-		<!-- Add hidden form field to handle update -->
-		<input type="hidden" th:field="*{id}" />
+				<!-- Add hidden form field to handle update -->
+				<input type="hidden" th:field="*{id}" />
 
-		<input type="text" th:field="*{firstName}" class="form-control mb-4 col-4">
+				<div class = "form-group">
+					<input type="text" th:field="*{firstName}" class="form-control mb-4 col-4">
+				</div>
+				<div class = "form-group">
+					<input type="text" th:field="*{lastName}" class="form-control mb-4 col-4">
+				</div>
 
-		<input type="text" th:field="*{lastName}" class="form-control mb-4 col-4">
+				<div class = "form-group">
+					<input type="text" th:field="*{email}"  class="form-control mb-4 col-4">
+				</div>
 
-		<input type="text" th:field="*{email}"  class="form-control mb-4 col-4">
+				<div class = "form-group">
+					<input type="text" th:field="*{phone}" th:placeholder="${employee.phone == '' } ? 'Phone number' : '*{phone}'" class="form-control mb-4 col-4">
+				</div>
+				<div class = "form-group">
+					<select id="available" name="available" class="text-left dropdown-toggle form-control mb-4 col-4 col-xs-12 " aria-label=".form-select-lg">
+						<option th:value ="*{available}" disabled selected hidden>Availability</option>
+						<option value="true">Available</option>
+						<option value="false">Not Available</option>
+					</select>
+				</div>
+				<div class = "form-group">
+					<select th:field="*{department}" id="department" name="department" class="text-left dropdown-toggle form-control mb-4 col-4 col-xs-12 " aria-label=".form-select-lg">
+						<option th:text="${employee.department == '' } ? 'Add subject': null " th:value ="*{department}" th:selected="*{department}" hidden></option>
+						<option value="Maths">Maths</option>
+						<option value="English">English</option>
+						<option value="French">French</option>
+						<option value="History">History</option>
+						<option value="PE">PE</option>
+						<option value="Irish">Irish</option>
+						<option value="Art">Art</option>
+						<option value="Science">Science</option>
+					</select>
+				</div>
+				<div class = "form-group">
+					<button type="submit" class="btn btn-info col-2 col-4 col-xs-12"> Update Details</button>
+				</div>
 
-		<input type="text" th:field="*{phone}" th:placeholder="${employee.phone == '' } ? 'Phone number' : '*{phone}'" class="form-control mb-4 col-4">
+			</form>
+			<a class="backHome" th:href = "@{/}"> Back to Substitutes List</a>
+		</div>
 
-		<select id="available" name="available" class="text-left dropdown-toggle form-control mb-4 col-4 col-xs-12 " aria-label=".form-select-lg">
-			<option th:value ="*{available}" disabled selected hidden>Availability</option>
-			<option value="true">Available</option>
-			<option value="false">Not Available</option>
-		</select>
+	</div>
 
 
-		<select th:field="*{department}" id="department" name="department" class="text-left dropdown-toggle form-control mb-4 col-4 col-xs-12 " aria-label=".form-select-lg">
-			<option th:text="${employee.department == '' } ? 'Add subject': null " th:value ="*{department}" th:selected="*{department}" hidden></option>
-			<option value="Maths">Maths</option>
-			<option value="English">English</option>
-			<option value="French">French</option>
-			<option value="History">History</option>
-			<option value="PE">PE</option>
-			<option value="Irish">Irish</option>
-			<option value="Art">Art</option>
-			<option value="Science">Science</option>
-		</select>
-		<button type="submit" class="btn btn-info col-2 col-4 col-xs-12"> Update Details</button>
-	</form>
 
-	<hr>
 
-	<a class="backHome" th:href = "@{/}"> Back to Employee List</a>
 </div>
 </body>
 </html>

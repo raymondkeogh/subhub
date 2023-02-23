@@ -72,6 +72,8 @@ h1,h2, .pagination, .pagination>div>span>a,.pagination>div>a{
 
 .backHome {
     color: #ffffff;
+    line-height: 4rem;
+    font-size: 1.6rem;
 }
 
 .available{
@@ -80,4 +82,8 @@ h1,h2, .pagination, .pagination>div>span>a,.pagination>div>a{
 
 .notAvailable {
   color: red;
+}
+
+select {
+    margin-bottom: 15px;
 }
